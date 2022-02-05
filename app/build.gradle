@@ -34,7 +34,7 @@ android {
         freeCompilerArgs = ['-Xjvm-default=compatibility']
     }
     buildFeatures {
-        viewBinding true
+        dataBinding true
     }
 }
 
