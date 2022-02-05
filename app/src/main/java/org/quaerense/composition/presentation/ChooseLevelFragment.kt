@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import org.quaerense.composition.R
+import androidx.navigation.fragment.findNavController
 import org.quaerense.composition.databinding.FragmentChooseLevelBinding
 import org.quaerense.composition.domain.entity.Level
 
@@ -51,17 +51,10 @@ class ChooseLevelFragment : Fragment() {
     }
 
     private fun launchGameFragment(level: Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, GameFragment.newInstance(level))
-            .addToBackStack(GameFragment.NAME)
-            .commit()
-    }
-
-    companion object {
-        const val NAME = "ChooseLevelFragment"
-
-        fun newInstance(): ChooseLevelFragment {
-            return ChooseLevelFragment()
-        }
+        findNavController().navigate(
+            ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(
+                level
+            )
+        )
     }
 }
